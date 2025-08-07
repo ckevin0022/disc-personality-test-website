@@ -25,10 +25,5 @@
   ],
   "env": {
     "FLASK_ENV": "production"
-  },
-  "functions": {
-    "backend/src/main.py": {
-      "maxDuration": 30
-    }
   }
 }
