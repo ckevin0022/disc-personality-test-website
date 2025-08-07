@@ -86,3 +86,4 @@ test_report.txt
 # Large files
 *.zip
 *.tar.gz
+.vercel
