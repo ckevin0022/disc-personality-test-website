@@ -43,6 +43,10 @@ with app.app_context():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
+    # 如果是API請求，讓Flask處理
+    if path.startswith('api/'):
+        return "API Server Running", 200
+    
     # 在Vercel環境中，靜態文件由前端構建處理
     if os.environ.get('VERCEL'):
         return "API Server Running", 200
