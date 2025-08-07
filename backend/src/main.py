@@ -21,16 +21,32 @@ app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(test_bp, url_prefix='/api/test')
 # app.register_blueprint(pdf_bp, url_prefix='/api/pdf')
 
-# uncomment if you need to use database
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+# 數據庫配置 - 支持Vercel環境
+if os.environ.get('VERCEL'):
+    # Vercel環境使用臨時數據庫
+    db_path = '/tmp/app.db'
+else:
+    # 本地環境使用相對路徑
+    db_path = os.path.join(os.path.dirname(__file__), 'database', 'app.db')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+
+# 確保數據庫目錄存在
+if not os.environ.get('VERCEL'):
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+
 with app.app_context():
     db.create_all()
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
+    # 在Vercel環境中，靜態文件由前端構建處理
+    if os.environ.get('VERCEL'):
+        return "API Server Running", 200
+    
     static_folder_path = app.static_folder
     if static_folder_path is None:
             return "Static folder not configured", 404
