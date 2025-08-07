@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* 科技感主題色彩 */
+  --deep-space-blue: #0B1426;
+  --electric-blue: #00D4FF;
+  --neon-purple: #8B5CF6;
+  --quantum-green: #00FF88;
+  --nebula-gray: #1E293B;
+  --light-beam-white: #F8FAFC;
+  --ghost-gray: #64748B;
+  --warning-orange: #FF6B35;
+  
+  /* 重新定義主題變量為科技感色彩 */
+  --background: #0B1426;
+  --foreground: #F8FAFC;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
+  --primary: #00D4FF;
+  --primary-foreground: #0B1426;
+  --secondary: #8B5CF6;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E293B;
+  --muted-foreground: #64748B;
+  --accent: #00FF88;
+  --accent-foreground: #0B1426;
+  --destructive: #FF6B35;
+  --border: rgba(0, 212, 255, 0.2);
+  --input: rgba(30, 41, 59, 0.8);
+  --ring: #00D4FF;
+  --chart-1: #00D4FF;
+  --chart-2: #8B5CF6;
+  --chart-3: #00FF88;
+  --chart-4: #FF6B35;
+  --chart-5: #64748B;
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #00D4FF;
+  --sidebar-primary-foreground: #0B1426;
+  --sidebar-accent: #8B5CF6;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: rgba(0, 212, 255, 0.2);
+  --sidebar-ring: #00D4FF;
+}
+
+.dark {
+  /* 保持相同的科技感主題 */
+  --background: #0B1426;
+  --foreground: #F8FAFC;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
+  --primary: #00D4FF;
+  --primary-foreground: #0B1426;
+  --secondary: #8B5CF6;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E293B;
+  --muted-foreground: #64748B;
+  --accent: #00FF88;
+  --accent-foreground: #0B1426;
+  --destructive: #FF6B35;
+  --border: rgba(0, 212, 255, 0.2);
+  --input: rgba(30, 41, 59, 0.8);
+  --ring: #00D4FF;
+  --chart-1: #00D4FF;
+  --chart-2: #8B5CF6;
+  --chart-3: #00FF88;
+  --chart-4: #FF6B35;
+  --chart-5: #64748B;
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #00D4FF;
+  --sidebar-primary-foreground: #0B1426;
+  --sidebar-accent: #8B5CF6;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: rgba(0, 212, 255, 0.2);
+  --sidebar-ring: #00D4FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, #0B1426 0%, #1E293B 100%);
+    min-height: 100vh;
+  }
+}
+
+/* 科技感動畫效果 */
+@layer utilities {
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  
+  .glow-effect:hover {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  }
+  
+  .glass-morphism {
+    background: rgba(30, 41, 59, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse-glow {
+    from { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+    to { box-shadow: 0 0 30px rgba(0, 212, 255, 0.6); }
+  }
+}
